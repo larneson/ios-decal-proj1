@@ -36,17 +36,23 @@ class HangmanViewController: UIViewController {
             game!.addGuess(letter: guess!)
             updateUIElements()
         }
-        if (game!.loseCondition()) {
-            makeAlert(text: "You lose")
-        } else if (game!.winCondition()) {
-            makeAlert(text: "You win")
-        }
         userGuessInput.text = ""
+        checkGameOver()
         
     }
 
     @IBAction func startOverPressed(_ sender: Any) {
         newGame()
+    }
+    
+    func checkGameOver() {
+        if (game!.loseCondition()) {
+            makeAlert(text: "You lose")
+        } else if (game!.winCondition()) {
+            makeAlert(text: "You win")
+        }
+        
+
     }
     
     func updateUIElements() {
@@ -68,7 +74,7 @@ class HangmanViewController: UIViewController {
         //NOTE: http://stackoverflow.com/questions/24022479/how-would-i-create-a-uialertview-in-swift
         
         let alert = UIAlertController(title: text, message: nil, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Play again?", style: UIAlertActionStyle.default, handler: {action in self.newGame()}))
         self.present(alert, animated: true, completion: nil)
     }
 }

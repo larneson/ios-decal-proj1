@@ -82,9 +82,9 @@ class Game {
             }
         }
         if (!anyWrong){
-            wrongGuesses = "No Wrong Guesses"
+            wrongGuesses = "None"
         }
-        return "Wrong Guesses: " + wrongGuesses
+        return "Incorrect Guesses: " + wrongGuesses
         
     }
     
